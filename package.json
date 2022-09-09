@@ -1,0 +1,15 @@
+{
+  "name": "com.cozydragon.localization",
+  "version": "0.0.1",
+  "displayName": "Simple Localization",
+  "description": "Простая реализация выбора языка в игре.",
+  "unity": "2021.3",
+  "keywords": [
+    "cozydragon, localization"
+  ],
+  "author": {
+    "name": "Денис Знов",
+    "email": "kaynir.games@gmail.com",
+    "url": "https://github.com/CozyDragonGames/simple-localization"
+  }
+}
