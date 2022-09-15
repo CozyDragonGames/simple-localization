@@ -10,8 +10,9 @@ namespace CozyDragon.Localization
 
         private void OnEnable()
         {
-            LocalizationSystem.OnLanguageChanged += UpdateTextField;
             UpdateTextField(LocalizationSystem.Language);
+            
+            LocalizationSystem.OnLanguageChanged += UpdateTextField;
         }
 
         private void OnDisable()

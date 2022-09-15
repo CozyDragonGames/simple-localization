@@ -8,10 +8,9 @@ namespace CozyDragon.Localization
     {
         [SerializeField] private List<LocalizationFile> _files = new List<LocalizationFile>();
 
-        private void Awake()
-        {
-            SetLanguage(_files[0]);
-        }
+        public SystemLanguage Language => LocalizationSystem.Language;
+
+        public int LanguageIndex { get; private set; }
 
         public void SetLanguage(SystemLanguage language)
         {
@@ -39,6 +38,7 @@ namespace CozyDragon.Localization
 
         private void SetLanguage(LocalizationFile file)
         {
+            LanguageIndex = _files.IndexOf(file); 
             LocalizationSystem.SetLanguage(file.Language, file.GetLocalization());
         }
 
