@@ -45,9 +45,11 @@ namespace CozyDragon.Localization
         [ContextMenu("Create Localization Files")]
         private void CreateLocalizationFiles()
         {
+            string folderName = $"{Application.dataPath}/Resources";
+
             for (int i = 0; i < _files.Count; i++)
             {
-                string path = _files[i].GetFullPath();
+                string path = $"{folderName}/{_files[i].Path}.json";
                 string defaultValue = _files[i].Language.ToString();
 
                 Localization localization = new Localization("Language", defaultValue);
@@ -57,6 +59,10 @@ namespace CozyDragon.Localization
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
                 File.WriteAllText(path, JsonUtility.ToJson(localization, true));
             }
+
+            #if UNITY_EDITOR
+            UnityEditor.AssetDatabase.Refresh();
+            #endif
         }
     }
 }

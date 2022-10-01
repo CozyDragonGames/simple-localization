@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using UnityEngine;
 
 namespace CozyDragon.Localization
@@ -7,28 +6,24 @@ namespace CozyDragon.Localization
     [Serializable]
     public class LocalizationFile
     {
+        private static string FOLDER_NAME = "Localization";
+
         [SerializeField] private SystemLanguage _language = SystemLanguage.Unknown;
-        [SerializeField] private string _folderPath = "Localization/";
 
         public SystemLanguage Language => _language;
+        public string Path => $"{FOLDER_NAME}/{_language}";
 
         public Localization GetLocalization()
         {
-            string path = GetFullPath();
+            TextAsset file = Resources.Load<TextAsset>(Path);
 
-            if (File.Exists(path))
+            if (file)
             {
-                string json = File.ReadAllText(path);
-                return JsonUtility.FromJson<Localization>(json);
+                return JsonUtility.FromJson<Localization>(file.text);
             }
 
             Debug.Log($"Localization file for {_language} is missing.");
             return new Localization();
-        }
-
-        public string GetFullPath()
-        {
-            return $"{Application.dataPath}/{_folderPath}/{_language}.json";
         }
     }
 }
