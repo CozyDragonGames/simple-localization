@@ -1,5 +1,5 @@
 {
-  "name": "com.cozydragon.localization",
+  "name": "com.kaynir.localization",
   "version": "0.0.2",
   "displayName": "Simple Localization",
   "description": "Простая реализация выбора языка в игре.",
@@ -10,6 +10,6 @@
   "author": {
     "name": "Денис Знов",
     "email": "kaynir.games@gmail.com",
-    "url": "https://github.com/CozyDragonGames/simple-localization"
+    "url": "https://github.com/Kaynir/simple-localization"
   }
 }
