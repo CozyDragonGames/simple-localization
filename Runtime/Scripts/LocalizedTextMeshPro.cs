@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace CozyDragon.Localization
+namespace Kaynir.SimpleLocalization
 {
     public class LocalizedTextMeshPro : MonoBehaviour
     {

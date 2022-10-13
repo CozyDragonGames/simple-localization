@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CozyDragon.Localization
+namespace Kaynir.SimpleLocalization
 {
     [Serializable]
     public class LocalizationFile

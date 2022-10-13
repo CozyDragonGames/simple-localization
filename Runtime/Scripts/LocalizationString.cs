@@ -1,6 +1,6 @@
 using System;
 
-namespace CozyDragon.Localization
+namespace Kaynir.SimpleLocalization
 {
     [Serializable]
     public struct LocalizationString

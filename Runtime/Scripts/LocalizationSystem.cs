@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CozyDragon.Localization
+namespace Kaynir.SimpleLocalization
 {
     public static class LocalizationSystem
     {

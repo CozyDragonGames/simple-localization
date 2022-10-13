@@ -1,6 +1,6 @@
 {
-  "name": "com.kaynir.localization",
-  "version": "0.0.2",
+  "name": "com.kaynir.simple-localization",
+  "version": "0.0.1",
   "displayName": "Simple Localization",
   "description": "Простая реализация выбора языка в игре.",
   "unity": "2021.3",

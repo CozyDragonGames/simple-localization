@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace CozyDragon.Localization
+namespace Kaynir.SimpleLocalization
 {
     public class LocalizationLoader : MonoBehaviour
     {
