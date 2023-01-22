@@ -1,11 +1,11 @@
 {
-  "name": "com.kaynir.simple-localization",
-  "version": "0.0.1",
+  "name": "com.kaynir.localization",
+  "version": "1.0.0",
   "displayName": "Simple Localization",
-  "description": "Простая реализация выбора языка в игре.",
+  "description": "Пакет выбора языка на базе Excel для малых проектов.",
   "unity": "2021.3",
   "keywords": [
-    "kaynir, localization"
+    "localization, language"
   ],
   "author": {
     "name": "Денис Знов",
