@@ -2,7 +2,7 @@
   "name": "com.kaynir.localization",
   "version": "1.0.0",
   "displayName": "Simple Localization",
-  "description": "Пакет выбора языка на базе Excel для малых проектов.",
+  "description": "Пакет выбора языка для малых проектов.",
   "unity": "2021.3",
   "keywords": [
     "localization, language"

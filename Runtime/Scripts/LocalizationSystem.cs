@@ -2,45 +2,29 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kaynir.SimpleLocalization
+namespace Kaynir.Localization
 {
     public static class LocalizationSystem
     {
-        public static event Action<SystemLanguage> OnLanguageChanged;
+        public static event Action OnLanguageChanged;
 
         private static Dictionary<string, string> _localization = new Dictionary<string, string>();
 
-        public static SystemLanguage Language { get; private set; } = SystemLanguage.English;
-
-        public static void SetLanguage(SystemLanguage language, Localization localization)
+        public static void SetLanguage(LocalizationLanguage language, Localizer localizer)
         {
-            Language = language;
-            CreateLocalization(localization.strings);
-            OnLanguageChanged?.Invoke(Language);
+            _localization = localizer.GetLocalization(language);
+            OnLanguageChanged?.Invoke();
         }
 
         public static string GetLocalizedString(string key)
         {
-            if (_localization.ContainsKey(key))
+            if (!_localization.TryGetValue(key, out string value))
             {
-                return _localization[key];
+                Debug.Log($"Localization for {key} is missing.");
+                return key;
             }
 
-            Debug.Log($"Localization for {key} is missing.");
-            return string.Empty;
-        }
-
-        private static void CreateLocalization(List<LocalizationString> strings)
-        {
-            _localization = new Dictionary<string, string>();
-
-            for (int i = 0; i < strings.Count; i++)
-            {
-                if (!_localization.ContainsKey(strings[i].key))
-                {
-                    _localization.Add(strings[i].key, strings[i].value);
-                }
-            }
+            return value;
         }
     }
 }

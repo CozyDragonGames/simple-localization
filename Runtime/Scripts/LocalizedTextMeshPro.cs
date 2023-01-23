@@ -1,17 +1,16 @@
 using UnityEngine;
 using TMPro;
 
-namespace Kaynir.SimpleLocalization
+namespace Kaynir.Localization
 {
     public class LocalizedTextMeshPro : MonoBehaviour
     {
+        [SerializeField] private string _key = "UI.Key";
         [SerializeField] private TMP_Text _textField = null;
-        [SerializeField] private LocalizedString _text = new LocalizedString();
 
         private void OnEnable()
         {
-            UpdateTextField(LocalizationSystem.Language);
-            
+            UpdateTextField();
             LocalizationSystem.OnLanguageChanged += UpdateTextField;
         }
 
@@ -20,9 +19,9 @@ namespace Kaynir.SimpleLocalization
             LocalizationSystem.OnLanguageChanged -= UpdateTextField;
         }
 
-        private void UpdateTextField(SystemLanguage language)
+        private void UpdateTextField()
         {
-            _textField.SetText(_text.Value);
+            _textField.SetText(_key.Localize());
         }
     }
 }
