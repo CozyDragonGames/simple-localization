@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c3ccd4cccc4a44ba73316f4ba71516, type: 3}
   m_Name: Russian
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Russian
+  <ID>k__BackingField: ru_RU

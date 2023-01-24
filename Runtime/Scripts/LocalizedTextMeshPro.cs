@@ -5,16 +5,16 @@ namespace Kaynir.Localization
 {
     public class LocalizedTextMeshPro : MonoBehaviour
     {
-        [SerializeField] private string _key = "UI.Key";
+        [SerializeField] private string _key = "Key.Name";
         [SerializeField] private TMP_Text _textField = null;
 
-        private void OnEnable()
+        private void Start()
         {
             UpdateTextField();
             LocalizationSystem.OnLanguageChanged += UpdateTextField;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             LocalizationSystem.OnLanguageChanged -= UpdateTextField;
         }
