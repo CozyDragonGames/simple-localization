@@ -6,5 +6,10 @@ namespace Kaynir.Localization
         {
             return LocalizationSystem.GetString(key);
         }
+
+        public static string Localize(this string key, params object[] args)
+        {
+            return LocalizationSystem.GetString(key, args);
+        }
     }
 }

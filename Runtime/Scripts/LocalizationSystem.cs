@@ -1,31 +1,36 @@
 using System;
+using System.Collections.Generic;
 using Kaynir.Localization.Localizers;
+using UnityEngine;
 
 namespace Kaynir.Localization
 {
     public static class LocalizationSystem
     {
-        public const string FOLDER_NAME = "Localization";
-
         public static event Action OnLanguageChanged;
 
-        private static ILocalizer _localizer;
+        public static SystemLanguage Language { get; private set; } = SystemLanguage.English;
 
-        public static void Initialize(ILocalizer localizer)
-        {
-            _localizer = localizer;
-            OnLanguageChanged?.Invoke();
-        }
+        private static Dictionary<string, string> _localization = new Dictionary<string, string>();
 
-        public static void SetLanguage(Language language)
+        public static void SetLanguage(Localizer localizer, SystemLanguage language)
         {
-            _localizer.LoadLanguage(language);
+            _localization = localizer.GetLocalization(language.ToString());
+
+            Language = language;
             OnLanguageChanged?.Invoke();
         }
 
         public static string GetString(string key)
         {
-            return _localizer.GetString(key);
+            if (_localization.TryGetValue(key, out string value)) return value;
+            Debug.Log($"{Language} translation for {key} not found.");
+            return key;
+        }
+
+        public static string GetString(string key, params object[] args)
+        {
+            return string.Format(GetString(key), args);
         }
     }
 }

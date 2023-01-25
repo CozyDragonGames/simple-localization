@@ -6,7 +6,7 @@ namespace Kaynir.Localization.Tools
 {
     public static class CSVReader
     {
-        private static string SPLIT_REGEX = @";";
+        private static string SPLIT_REGEX = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
         private static string LINE_SPLIT_REGEX = @"\r\n|\n\r|\n|\r";
         private static char[] TRIM_CHARS = { '\"' };
 
