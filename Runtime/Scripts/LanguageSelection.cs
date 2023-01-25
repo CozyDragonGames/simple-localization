@@ -11,7 +11,12 @@ namespace Kaynir.Localization
 
         public void SetLanguage(int index)
         {
-            _localizer.SetLanguage(_languageList[index]);
+            SetLanguage(_languageList[index]);
+        }
+
+        public void SetLanguage(SystemLanguage language)
+        {
+            _localizer.SetLanguage(language);
         }
     }
 }
