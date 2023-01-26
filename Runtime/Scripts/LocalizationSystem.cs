@@ -9,11 +9,11 @@ namespace Kaynir.Localization
     {
         public static event Action OnLanguageChanged;
 
-        public static SystemLanguage Language { get; private set; } = SystemLanguage.English;
+        public static string Language { get; private set; } = "Russian";
 
         private static Dictionary<string, string> _localization = new Dictionary<string, string>();
 
-        public static void SetLanguage(Localizer localizer, SystemLanguage language)
+        public static void SetLanguage(Localizer localizer, string language)
         {
             _localization = localizer.GetLocalization(language.ToString());
 

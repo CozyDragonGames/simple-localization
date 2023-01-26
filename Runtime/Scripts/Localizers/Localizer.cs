@@ -5,7 +5,7 @@ namespace Kaynir.Localization.Localizers
 {
     public abstract class Localizer : MonoBehaviour
     {
-        public void SetLanguage(SystemLanguage language)
+        public void SetLanguage(string language)
         {
             LocalizationSystem.SetLanguage(this, language);
         }
