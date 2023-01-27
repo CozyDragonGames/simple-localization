@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Kaynir.Localization.Localizers;
 using UnityEngine;
 
@@ -11,11 +10,16 @@ namespace Kaynir.Localization
 
         public static string Language { get; private set; } = "Russian";
 
-        private static Dictionary<string, string> _localization = new Dictionary<string, string>();
+        private static ILocalizer _localizer;
 
-        public static void SetLanguage(Localizer localizer, string language)
+        public static void Initialize(ILocalizer localizer)
         {
-            _localization = localizer.GetLocalization(language.ToString());
+            _localizer = localizer;
+        }
+
+        public static void SetLanguage(string language)
+        {
+            _localizer.SetLanguage(language);
 
             Language = language;
             OnLanguageChanged?.Invoke();
@@ -23,7 +27,7 @@ namespace Kaynir.Localization
 
         public static string GetString(string key)
         {
-            if (_localization.TryGetValue(key, out string value)) return value;
+            if (_localizer.TryGetString(key, out string value)) return value;
             Debug.Log($"{Language} translation for {key} not found.");
             return key;
         }

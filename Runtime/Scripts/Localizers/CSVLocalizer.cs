@@ -4,25 +4,35 @@ using UnityEngine;
 
 namespace Kaynir.Localization.Localizers
 {
-    public class CSVLocalizer : Localizer
+    public class CSVLocalizer : ILocalizer
     {
         private const string KEY_HEADER = "Key";
 
-        [SerializeField] private TextAsset _textSheet = null;
+        private TextAsset _textSheet;
+        private Dictionary<string, string> _localization;
 
-        public override Dictionary<string, string> GetLocalization(string language)
+        public CSVLocalizer(TextAsset textSheet)
         {
-            Dictionary<string, string> localization = new Dictionary<string, string>();
+            _textSheet = textSheet;
+            _localization = new Dictionary<string, string>();
+        }
+
+        public bool TryGetString(string key, out string value)
+        {
+            return _localization.TryGetValue(key, out value);
+        }
+
+        public void SetLanguage(string language)
+        {
+            _localization = new Dictionary<string, string>();
 
             foreach (var entry in CSVReader.FromCSV(_textSheet))
             {
                 if (!entry.TryGetValue(KEY_HEADER, out string key)) continue;
                 if (!entry.TryGetValue(language, out string value)) continue;
 
-                localization[key] = value;
+                _localization[key] = value;
             }
-
-            return localization;
         }
     }
 }
