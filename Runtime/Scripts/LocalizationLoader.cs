@@ -6,6 +6,7 @@ namespace Kaynir.Localization
     public class LocalizationLoader : MonoBehaviour
     {
         [SerializeField] protected string _defaultLanguage = "Russian";
+        [SerializeField] protected TextAsset _textSheet = null;
 
         private void Awake()
         {
@@ -14,9 +15,7 @@ namespace Kaynir.Localization
 
         protected virtual void Initialize()
         {
-            TextAsset sheet = Resources.Load<TextAsset>("Localization/");
-
-            LocalizationSystem.Initialize(new CSVLocalizer(sheet));
+            LocalizationSystem.Initialize(new CSVLocalizer(_textSheet));
             LocalizationSystem.SetLanguage(_defaultLanguage);
         }
     }
