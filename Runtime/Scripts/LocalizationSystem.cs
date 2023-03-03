@@ -7,12 +7,12 @@ namespace Kaynir.Localization
     public static class LocalizationSystem
     {
         public static event Action OnLanguageChanged;
-
-        public static string Language { get; private set; } = "Russian";
+        
+        public static string Language { get; private set; }
 
         private static ILocalizer _localizer;
 
-        public static void Initialize(ILocalizer localizer)
+        public static void Init(ILocalizer localizer)
         {
             _localizer = localizer;
         }
@@ -23,6 +23,11 @@ namespace Kaynir.Localization
 
             Language = language;
             OnLanguageChanged?.Invoke();
+        }
+
+        public static void SetLanguage(SystemLanguage language)
+        {
+            SetLanguage(language.ToString());
         }
 
         public static string GetString(string key)
