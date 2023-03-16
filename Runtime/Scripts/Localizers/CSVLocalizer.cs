@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Kaynir.Localization.Tools;
 using UnityEngine;
 
 namespace Kaynir.Localization.Localizers

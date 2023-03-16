@@ -1,14 +1,12 @@
 using UnityEngine;
 
-namespace Kaynir.Localization
+namespace Kaynir.Localization.Localizables
 {
     public abstract class LocalizedBehaviour : MonoBehaviour
     {
-        [SerializeField] protected string _localizationKey = "Key";
-
         protected virtual void Start()
         {
-            Localize();
+            Localize(LocalizationSystem.Language);
             LocalizationSystem.OnLanguageChanged += Localize;
         }
 
@@ -17,6 +15,6 @@ namespace Kaynir.Localization
             LocalizationSystem.OnLanguageChanged -= Localize;
         }
 
-        protected abstract void Localize();
+        protected abstract void Localize(string language);
     }
 }

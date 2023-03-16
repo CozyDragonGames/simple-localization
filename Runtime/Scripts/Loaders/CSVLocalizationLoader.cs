@@ -5,12 +5,11 @@ namespace Kaynir.Localization.Loaders
 {
     public class CSVLocalizationLoader : LocalizationLoader
     {
-        [SerializeField] private TextAsset _textAsset = null;
+        [SerializeField] private TextAsset _textSheet = null;
 
-        public override void Init(SystemLanguage language)
+        public override void Init(string language)
         {
-            LocalizationSystem.Init(new CSVLocalizer(_textAsset));
-            LocalizationSystem.SetLanguage(language);
+            Init(new CSVLocalizer(_textSheet), language);
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace Kaynir.Localization.Tools
+namespace Kaynir.Localization.Localizers
 {
     public static class CSVReader
     {
@@ -18,7 +18,7 @@ namespace Kaynir.Localization.Tools
             
             if (lines.Length <= 1) return list;
 
-            string[] header = Regex.Split(lines[0], SPLIT_REGEX);
+            string[] headers = Regex.Split(lines[0], SPLIT_REGEX);
 
             for (int i = 1; i < lines.Length; i++)
             {
@@ -26,21 +26,21 @@ namespace Kaynir.Localization.Tools
 
                 if (values.Length == 0 || values[0] == string.Empty) continue;
 
-                list.Add(CreateEntry(header, values));
+                list.Add(CreateEntry(headers, values));
             }
 
             return list;
         }
 
-        private static Dictionary<string, string> CreateEntry(string[] header, string[] values)
+        private static Dictionary<string, string> CreateEntry(string[] headers, string[] values)
         {
             Dictionary<string, string> entry = new Dictionary<string, string>();
             
-            for (int i = 0; i < header.Length && i < values.Length; i++)
+            for (int i = 0; i < headers.Length && i < values.Length; i++)
             {
-                entry[header[i]] = values[i].TrimStart(TRIM_CHARS)
-                                            .TrimEnd(TRIM_CHARS)
-                                            .Replace("\\", string.Empty);
+                entry[headers[i]] = values[i].TrimStart(TRIM_CHARS)
+                                             .TrimEnd(TRIM_CHARS)
+                                             .Replace("\\", string.Empty);
             }
 
             return entry;

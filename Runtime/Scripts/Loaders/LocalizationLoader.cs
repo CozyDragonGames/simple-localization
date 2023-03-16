@@ -1,14 +1,20 @@
+using Kaynir.Localization.Localizers;
 using UnityEngine;
 
 namespace Kaynir.Localization.Loaders
 {
     public abstract class LocalizationLoader : MonoBehaviour
     {
-        [SerializeField] private SystemLanguage _defaultLanguage = SystemLanguage.Russian;
+        public abstract void Init(string language);
+        public void Init(SystemLanguage language) => Init(language.ToString());
 
-        public abstract void Init(SystemLanguage language);
+        public void SetLanguage(string language) => LocalizationSystem.SetLanguage(language);
+        public void SetLanguage(SystemLanguage language) => SetLanguage(language.ToString());
 
-        [ContextMenu("Init")]
-        public void Init() => Init(_defaultLanguage);
+        protected void Init(ILocalizer localizer, string language)
+        {
+            LocalizationSystem.Init(localizer);
+            SetLanguage(language);
+        }
     }
 }
