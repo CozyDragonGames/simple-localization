@@ -7,9 +7,9 @@ namespace Kaynir.Localization.Loaders
     {
         [SerializeField] private TextAsset _textSheet = null;
 
-        public override void Init(string language)
+        public override void SetLanguage(string language)
         {
-            Init(new CSVLocalizer(_textSheet), language);
+            SetLanguage(new CSVLocalizer(_textSheet), language);
         }
     }
 }
