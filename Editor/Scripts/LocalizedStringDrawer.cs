@@ -13,7 +13,7 @@ namespace Kaynir.Localization.Editors
 
             SerializedProperty key = property.FindPropertyRelative("_key");
 
-            EditorGUI.PropertyField(position, key);
+            EditorGUI.PropertyField(position, key, label);
 
             EditorGUI.EndProperty();
         }
